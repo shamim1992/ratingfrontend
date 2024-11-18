@@ -85,12 +85,12 @@ const UnratedQuestions = ({ questions, onRate }) => (
                                         </p>
                                     </div>
                                     <div>
-                                        <button
+                                        {/* <button
                                             onClick={() => onRate(question._id)}
                                             className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                                         >
                                             Rate Now
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </div>
                             </li>
