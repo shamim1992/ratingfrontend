@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 // src/components/Questions/ImagePreview.js
 const ImagePreview = ({ images, removeImage, title }) => (
     <div className="mt-4">
@@ -7,7 +9,7 @@ const ImagePreview = ({ images, removeImage, title }) => (
           <div key={index} className="relative">
             <img
               src={typeof image === 'string' ? image : URL.createObjectURL(image)}
-              alt={`Preview ${index + 1}`}
+              alt={`Preview ${index + 1}`} 
               className="w-24 h-24 object-cover rounded-lg border border-gray-200"
             />
             <button
