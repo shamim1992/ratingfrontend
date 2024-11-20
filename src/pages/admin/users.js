@@ -31,6 +31,8 @@ const StatsCard = ({ title, value }) => (
 
 // User Modal Component
 const UserModal = ({ user, onClose }) => (
+
+   
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
         <div className="bg-white rounded-lg p-8 max-w-lg w-full m-4">
             <div className="flex justify-between items-center mb-6">
@@ -67,10 +69,16 @@ const UserModal = ({ user, onClose }) => (
                     <div>
                         <h3 className="text-sm font-medium text-gray-500">Recent Ratings</h3>
                         <div className="mt-1 space-y-2">
-                            {user.ratings.map((rating, index) => (
-                                <div key={index} className="text-sm text-gray-600">
-                                    {rating.question}: {rating.rating} stars
+                            {
+                                
+                            
+                            user.ratings.map((rating, index) => (
+
+                                <div key={index} className="text-sm text-gray-600" >
+                                    {rating.question}:{rating.rating}
                                 </div>
+                                   
+                             
                             ))}
                         </div>
                     </div>

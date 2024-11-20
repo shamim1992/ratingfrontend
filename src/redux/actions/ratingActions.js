@@ -83,19 +83,13 @@ export const fetchUserRatings = () => async (dispatch) => {
 export const submitRating = ({ questionId, rating, userId }) => async (dispatch) => {
     try {
         const token = localStorage.getItem('token');
-        
         const config = {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             },
         };
-
         dispatch(setLoading(true));
-        
-        // Log the request data
-        console.log('Submitting rating:', { questionId, rating, userId });
-
         const response = await axios.post(`${ApiUrl}/ratings`, {
             questionId,
             rating,
@@ -104,7 +98,7 @@ export const submitRating = ({ questionId, rating, userId }) => async (dispatch)
 
         if (response.data.success) {
             dispatch(addRating({ questionId, rating }));
-            toast.success('Rating submitted successfully');
+           
             return true;
         } else {
             throw new Error(response.data.error || 'Failed to submit rating');
@@ -119,40 +113,12 @@ export const submitRating = ({ questionId, rating, userId }) => async (dispatch)
         dispatch(setLoading(false));
     }
 };
-// export const submitRating = (questionId, rating, userId) => async (dispatch) => {
-//     try {
-//         const token = localStorage.getItem('token');
-     
-//         const config = {
-//             headers: {
-//                 Authorization: `Bearer ${token}`,
-//             },
-//         };
-//         dispatch(setLoading(true));
-//         const response = await axios.post(`${ApiUrl}/ratings`, {
-//             questionId,
-//             rating,
-//             userId,
-//         }, config);
-//         dispatch(addRating({ questionId, rating, userId }));
-//         toast.success('Rating submitted successfully');
-//     } catch (error) {
-//         const message = error.response?.data?.error || 'Error submitting rating';
-//         dispatch(setError(message));
-//         toast.error(message);
-//         throw error;
-//     } finally {
-//         dispatch(setLoading(false));
-//     }
-// };
-
-// Update rating
 export const updateRatingById = (questionId, rating) => async (dispatch) => {
     try {
         dispatch(setLoading(true));
         await axios.put(`${ApiUrl}/ratings/${questionId}`, { rating });
         dispatch(updateRating({ questionId, rating }));
-        toast.success('Rating updated successfully');
+        
     } catch (error) {
         const message = error.response?.data?.error || 'Error updating rating';
         dispatch(setError(message));
@@ -169,7 +135,7 @@ export const deleteRatingById = (questionId) => async (dispatch) => {
         dispatch(setLoading(true));
         await axios.delete(`${ApiUrl}/ratings/${questionId}`);
         dispatch(deleteRating(questionId));
-        toast.success('Rating deleted successfully');
+        
     } catch (error) {
         const message = error.response?.data?.error || 'Error deleting rating';
         dispatch(setError(message));

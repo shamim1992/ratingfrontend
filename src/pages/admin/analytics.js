@@ -27,7 +27,7 @@ const RatingDistribution = ({ ratings }) => {
         <div className="bg-white rounded-lg shadow-sm p-6">
             <h3 className="text-lg font-semibold mb-4">Rating Distribution</h3>
             <div className="space-y-4">
-                {[5, 4, 3, 2, 1].map((rating) => {
+                {[10, 9, 8, 7, 6, 5, 4, 3, 2, 1].map((rating) => {
                     const count = ratings?.[rating] || 0;
                     const percentage = maxCount > 0 ? (count / maxCount) * 100 : 0;
                     

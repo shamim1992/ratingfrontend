@@ -90,7 +90,7 @@ export const createQuestion = (formData) => async (dispatch) => {
         });
 
         dispatch(addQuestion(response.data.data));
-        toast.success('Question created successfully');
+      
         return response.data.data;
     } catch (error) {
         const message = error.response?.data?.error || error.message || 'Error creating question';
@@ -143,7 +143,7 @@ export const deleteQuestionById = (id) => async (dispatch) => {
 
         await api.delete(`/questions/${id}`);
         dispatch(removeQuestion(id));
-        toast.success('Question deleted successfully');
+      
         return true;
     } catch (error) {
         const message = error.response?.data?.error || 'Error deleting question';
